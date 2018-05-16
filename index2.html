@@ -1,72 +1,95 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css">
     <title>The one with the gems!</title>
-  </head>
-  <body>
-     <nav class="navbar navbar-light bg-light">
-                <span class="navbar-brand mb-0 h1" style="text-align: center"> The Gem Collector</span>
-              </nav>
-    <div class="container">
-            <div class="start-game" id="start">
-                    <h3 > Get Ready!</h3>
-                <div class= "instructions" style="text-align: center">
-                       <p>There are four gems below. By clicking on a Gem you will add a specific amount of points to your total score.
-                        <br> You win the game by matching you total score to random number, you lose the game if your total score goes above the random number.
-                       <br>The Value of each gem is hidden from you until you click on it.
-                       <br>Each time when the game starts, the game will change the values of each gem.</p>
-                </div>
-    <!--gems images layout-->
-               <div class="row">
-                   <div class="col-md-3 col-sm-6 col-xs-12">
-                       <img alt="aguamarina" src="./assets/images/aguamarina.png" id = "blue-gem" style= "height : 170px;" class="img-responsive">
-                   </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                       <img  alt="purple" src="./assets/images/morada.png" id = "purple-gem"  style= "height : 170px;" class="img-responsive">
-                   </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                       <img src="./assets/images/rubi.png" id= "rubi-gem" alt="rubi" style= "height : 170px;"  class="img-responsive">
-                   </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                       <img alt="topaz" src="./assets/images/topaz.png" id= "topaz-gem" style= "height : 170px;"  class="img-responsive">
-                   </div>
-               </div>
-             </div>
-    <!--Scores and output-->      
-       <div class= "row">
-           <div class = "col-md-8" class= "round-output" style=" color: antiquewhite;">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4>Your Score:<span id= "total-score">0</span></h4>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1" style="text-align: center"> The Gem Collector</span>
+    </nav>
+    <div class="container-fluid">
+        <div class="start-game" >
+            <!--gems images layout-->
+            <div class="row">
+                <div class="col-12">
+                  <button type="button" id = "start-game" class="btn btn-lg btn-primary" disabled>start</button>
+                  <audio id="theme-song">
+                        <source src="./assets/intro-retro.mp3" type="audio/mpeg">
+                         </audio>
+                    <div class="instructions" style="text-align: center">
+                        <p>There are four gems below. By clicking on a Gem you will add a specific amount of points to your
+                            total score.
+                            <br> You win the game by matching you total score to random number, you lose the game if your total
+                            score goes above the random number.
+                            <br>The Value of each gem is hidden from you until you click on it.
+                            <br>Each time when the game starts, the game will change the values of each gem.</p>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4>Number: <span id= "target-number"></span></h4>
-                     </div>
-           </div>
-        </div>
-    <!--rounds wins and looses-->      
-      <div class= "row">
-            <div class = "col-md-12" class= "wins-looses">
-                 <div class="col-md-3 col-sm-6 col-xs-12">
-                         <h4>Wins:<span id="total-wins"></span></h4>
-                     </div>
-                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4>Loss:<span id="total-loss"></span></h4>
-                      </div>
+                </div>
+                <div class="col-3">
+                    <img alt="aguamarina" src="./assets/images/aguamarina.png" id="blue-gem" style="height : 170px;" class="img-responsive">
+                </div>
+                <div class="col-3">
+                    <img alt="purple" src="./assets/images/morada.png" id="purple-gem" style="height : 170px;" class="img-responsive">
+                </div>
+                <div class="col-3">
+                    <img src="./assets/images/rubi.png" id="rubi-gem" alt="rubi" style="height : 170px;" class="img-responsive">
+                </div>
+                <div class="col-3">
+                    <img alt="topaz" src="./assets/images/topaz.png" id="topaz-gem" style="height : 170px;" class="img-responsive">
+                </div>
+                <!--Scores and output-->
+                <div class="col-12" class="round-output" style=" color: antiquewhite;">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Your Score:
+                                <span id="total-score">0</span>
+                            </h4>
+                        </div>
+                        <div class="col-6">
+                            <h4>Number:
+                                <span id="target-number"></span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <!--rounds wins and looses-->
+                <div class="col-12" class="wins-looses">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Wins:
+                                <span id="total-wins"></span>
+                            </h4>
+                        </div>
+                        <div class="col-6">
+                            <h4>Loss:
+                                <span id="total-loss"></span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
+        </div>
 
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script src="./assets/javascript/game.js"></script>
+</body>
+
 </html>

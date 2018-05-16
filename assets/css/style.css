@@ -1,8 +1,12 @@
 body {
-    background: blueviolet;
+    /* background: blueviolet; */
+    background: url("../images/clouds-02-01.jpg");
+    background-repeat: no-repeat;
 }
 
-
+.container-fluid {
+    padding: 0 20% 0 20%;
+}
 
 #back-image {
     background-size:950px auto;
